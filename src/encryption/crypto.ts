@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-const secretKey =  process.env.ENCRYPTION_KEY ?? '12345678901234567890123456789012';
+const secretKey =  process.env.ENCRYPTION_KEY  as string;
 
 export const  encryptString = (text: string): string => {
     const iv = Buffer.alloc(16, 0);

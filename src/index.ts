@@ -2,14 +2,16 @@ import express, { Request, Response } from 'express';
 import cors from "cors";
 import dotenv from "dotenv";
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import { appRouter } from './routes/z';
+import { appRouter } from './routes';
 import { createContext } from './trpc';
 import mongoose from "mongoose";
 import User from './models/User';
+import ReceiptEmail from './models/mailreadreceipts/ReceiptEmail';
 dotenv.config();
 
 const clearDB = async () =>{
     await User.deleteMany({});
+    await ReceiptEmail.deleteMany({});
     console.log("!!! DB Cleared !!!");
 } 
 
